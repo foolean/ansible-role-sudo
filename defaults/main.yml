@@ -1,0 +1,36 @@
+# Copyright (c) 2023, Bennett Samowich <bennett@foolean.org>
+# All rights reserved
+# SPDX short identifier: BSD-3-Clause
+---
+
+# sudo_admin_users
+#  List of users that are permitted to full administrative rights via sudo.
+#  Note: root will always be included
+#  (default: null)
+sudo_admin_users: null
+
+# sudo_env_keep
+#  Variables in the caller's environment to keep
+#  (default: COLORS DISPLAY EMAIL GIT_COMMITTER_EMAIL GIT_COMMITTER_NAME HISTSIZE HOME HOSTNAME KRB5CCNAME LANG LANGUAGE LC_CTYPE LC_NUMERIC LC_TIME LC_ALL LS_COLORS MAIL PS1 PS2 TZ)
+sudo_env_keep:
+  - 'COLORS'
+  - 'DISPLAY'
+  - 'EMAIL'
+  - 'GIT_COMMITTER_EMAIL'
+  - 'GIT_COMMITTER_NAME'
+  - 'HOME'
+  - 'HISTSIZE'
+  - 'HOSTNAME'
+  - 'KRB5CCNAME'
+  - 'LANG'
+  - 'LANGUAGE'
+  - 'LC_CTYPE'
+  - 'LC_NUMERIC'
+  - 'LC_TIME'
+  - 'LC_ALL'
+  - 'LS_COLORS'
+  - 'MAIL'
+  - 'PS1'
+  - 'PS2'
+  - 'TZ'
+

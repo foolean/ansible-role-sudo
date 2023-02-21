@@ -1,0 +1,12 @@
+# This grants the ability for assigned system administrators and other
+# designated users to execute arbitrary commands as arbitrary users.
+
+# Default system administrator
+root               ALL=(ALL) ALL
+
+# System Administrators
+{% if sudo_admin_users != None %}
+{% for sudo_admin_user in sudo_admin_users|unique|sort %}
+{{ '%-15s'|format(sudo_admin_user) }}    ALL=(ALL) ALL
+{% endfor %}
+{% endif %}
