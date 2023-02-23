@@ -3,40 +3,45 @@
 # SPDX short identifier: BSD-3-Clause
 ---
 
+# We put the entire role in a block so we can create
+# a role specific tag, which saves the caller from
+# having to do so in their playbook.
 - name: Role foolean/sudo
   block:
 
-  - name: CIS | Ensure sudo is installed
-    become: true
-    ansible.builtin.package:
-      name: 'sudo'
-      state: present
+    - name: CIS | Ensure sudo is installed
+      become: true
+      ansible.builtin.package:
+        name: 'sudo'
+        state: present
 
-  - name: CIS | Configure sudo
-    become: true
-    ansible.builtin.template:
-      src: 'etc/sudoers.j2'
-      dest: '/etc/sudoers'
-      owner: 'root'
-      group: 'root'
-      mode: '0440'
+    - name: CIS | Configure sudo
+      become: true
+      ansible.builtin.template:
+        src: 'etc/sudoers.j2'
+        dest: '/etc/sudoers'
+        owner: 'root'
+        group: 'root'
+        mode: '0440'
 
-  - name: Ensure the sudoers.d directory is configured
-    become: true
-    ansible.builtin.file:
-      name: '/etc/sudoers.d'
-      state: directory
-      owner: 'root'
-      group: 'root'
-      mode: '0750'
+    - name: Ensure the sudoers.d directory is configured
+      become: true
+      ansible.builtin.file:
+        name: '/etc/sudoers.d'
+        state: directory
+        owner: 'root'
+        group: 'root'
+        mode: '0750'
 
-  - name: Configure system administrators
-    become: true
-    ansible.builtin.template:
-      src: 'etc/sudoers.d/admins.j2'
-      dest: '/etc/sudoers.d/admins'
-      owner: 'root'
-      group: 'root'
-      mode: '0440'
+    - name: Configure system administrators
+      become: true
+      ansible.builtin.template:
+        src: 'etc/sudoers.d/admins.j2'
+        dest: '/etc/sudoers.d/admins'
+        owner: 'root'
+        group: 'root'
+        mode: '0440'
+
+  # Tags to be applied to this role (block)
   tags:
     - 'role_foolean_sudo'

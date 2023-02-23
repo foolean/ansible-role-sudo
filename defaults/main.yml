@@ -33,4 +33,3 @@ sudo_env_keep:
   - 'PS1'
   - 'PS2'
   - 'TZ'
-
