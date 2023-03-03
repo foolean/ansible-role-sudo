@@ -9,6 +9,13 @@
 - name: Role foolean/sudo
   block:
 
+    - name: Collecting package facts
+      become: true
+      ansible.builtin.package_facts:
+        manager: auto
+      when:
+        - "ansible_facts.packages is not defined"
+
     - name: CIS | Ensure sudo is installed
       become: true
       ansible.builtin.package:

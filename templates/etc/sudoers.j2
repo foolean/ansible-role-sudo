@@ -90,6 +90,12 @@ root    ALL=(ALL:ALL) ALL
 # Allow members of group sudo to execute any command
 %sudo   ALL=(ALL:ALL) ALL
 
+{% if ansible_facts.packages['sudo'][0]['version'] is version('1.9.1', '<') %}
 ## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
 ## See sudoers(5) for more information on "#include" directives:
 #includedir /etc/sudoers.d
+{% else %}
+# Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+# See sudoers(5) for more information on "@include" directives:
+@includedir /etc/sudoers.d
+{% endif %}

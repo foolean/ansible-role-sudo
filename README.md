@@ -29,8 +29,15 @@ Ansible role to manage sudo
     ```
 
 
+## Supported operating systems
+
+    * Debian (11)
+    * RedHat (8)
+
+
 ## Compliance
 
+    * CIS Debian 11 Linux Benchmark v1.0.0
     * CIS RedHat Enterprise Linux 8 Benchmark v2.0.0
 
 
